@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Lanchonete e Restaurante Catarinense LTDA — Empresa brasileira de comércio e alimentação digital sediada em Arapongas, PR. Transparência e conformidade legal."/>
+<title>Restaurante Catarinense | Sabor & Tradição</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#f5f0ea;
+  --glass:rgba(255,255,255,0.6);
+  --glass-b:rgba(180,130,90,0.2);
+  --glass-hover:rgba(255,255,255,0.8);
+  --accent:#7a5c3a;
+  --accent2:#c4622d;
+  --green:#4a6741;
+  --text:#1e1a14;
+  --muted:#6b5e4e;
+  --dim:rgba(122,92,58,0.12);
+  --r:14px;
+  --blur:blur(20px) saturate(160%);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.75;min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 0% 0%,rgba(74,103,65,0.07) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 100% 100%,rgba(196,98,45,0.07) 0%,transparent 55%);pointer-events:none;z-index:0;}
+
+/* LOGO */
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;}
+.logo-leaf{width:38px;height:38px;border-radius:50% 30% 50% 30%;background:linear-gradient(135deg,var(--green),#6a9460);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;box-shadow:0 4px 14px rgba(74,103,65,0.2);}
+.logo-text{display:flex;flex-direction:column;line-height:1.15;}
+.logo-main{font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:var(--text);}
+.logo-sub{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
+
+/* NAV */
+header{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:92%;max-width:1100px;background:rgba(245,240,234,0.88);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--glass-b);border-radius:12px;z-index:100;padding:0 24px;box-shadow:0 2px 20px rgba(122,92,58,0.1);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:56px;}
+nav{display:flex;gap:3px;}
+nav a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;padding:6px 15px;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;}
+nav a:hover,nav a.active{color:var(--accent2);border-color:rgba(196,98,45,0.25);background:rgba(196,98,45,0.07);}
+
+/* PAGES */
+section.page{display:none;padding-top:96px;}
+section.page.active{display:block;}
+
+/* HERO */
+.hero{min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:60px 5%;}
+.hero-inner{max-width:720px;}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(74,103,65,0.08);border:1px solid rgba(74,103,65,0.22);border-radius:6px;padding:5px 16px;font-size:11px;font-weight:700;color:var(--green);letter-spacing:.09em;text-transform:uppercase;margin-bottom:30px;}
+.badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.2;}}
+h1{font-family:'Libre Baskerville',serif;font-size:clamp(34px,5.5vw,60px);font-weight:700;line-height:1.1;margin-bottom:22px;color:var(--text);}
+h1 em{font-style:italic;color:var(--accent2);}
+.hero-sub{font-size:17px;color:var(--muted);max-width:500px;margin:0 auto 38px;font-weight:300;}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:12px 26px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;}
+.btn-p{background:var(--accent2);color:#fff;}
+.btn-p:hover{background:#b5561f;transform:translateY(-1px);box-shadow:0 8px 24px rgba(196,98,45,0.25);}
+.btn-o{background:var(--glass);border:1px solid var(--glass-b);color:var(--text);}
+.btn-o:hover{background:var(--glass-hover);border-color:rgba(122,92,58,0.35);}
+
+/* SECTIONS */
+.wrap{max-width:1100px;margin:0 auto;padding:0 5%;}
+.sec{padding:76px 0;}
+.sec-tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:12px;}
+.sec-title{font-family:'Libre Baskerville',serif;font-size:clamp(26px,4vw,40px);font-weight:700;margin-bottom:18px;line-height:1.15;color:var(--text);}
+.sec-sub{color:var(--muted);max-width:520px;font-size:15.5px;font-weight:300;}
+
+/* CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;margin-top:44px;}
+.card{background:rgba(255,255,255,0.75);border:1px solid var(--glass-b);backdrop-filter:var(--blur);border-radius:var(--r);padding:30px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 12px rgba(122,92,58,0.06);}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(122,92,58,0.12);}
+.card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--green),var(--accent2));}
+.card-icon{font-size:26px;margin-bottom:16px;}
+.card h3{font-family:'Libre Baskerville',serif;font-size:19px;font-weight:700;margin-bottom:9px;color:var(--text);}
+.card p{color:var(--muted);font-size:13.5px;font-weight:300;}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--dim);border-radius:var(--r);overflow:hidden;margin-top:44px;}
+.stat{background:rgba(255,255,255,0.8);padding:30px 20px;text-align:center;}
+.stat-n{font-family:'Libre Baskerville',serif;font-size:38px;font-weight:700;color:var(--accent2);line-height:1;}
+.stat-l{font-size:12px;color:var(--muted);margin-top:6px;font-weight:500;}
+
+/* BOX */
+.box{background:rgba(255,255,255,0.7);border:1px solid var(--glass-b);border-radius:var(--r);padding:28px 32px;margin-top:20px;box-shadow:0 2px 12px rgba(122,92,58,0.06);}
+.box h4{font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.box p{font-size:13.5px;color:var(--muted);line-height:1.85;font-weight:300;}
+.box p strong{color:var(--text);font-weight:600;}
+
+/* HR */
+.hr{height:1px;background:var(--dim);margin:0 5%;}
+
+/* POLICY */
+.policy-wrap{max-width:820px;margin:0 auto;padding:0 5% 80px;}
+.policy-wrap h2{font-family:'Libre Baskerville',serif;font-size:clamp(28px,4vw,40px);font-weight:700;margin-bottom:32px;line-height:1.1;color:var(--text);}
+.policy-wrap h3{font-size:13px;font-weight:700;margin:32px 0 12px;color:var(--accent2);text-transform:uppercase;letter-spacing:.07em;}
+.policy-wrap p{color:var(--muted);font-size:14px;margin-bottom:14px;line-height:1.85;font-weight:300;}
+.policy-wrap ul{color:var(--muted);padding-left:20px;margin-bottom:14px;}
+.policy-wrap ul li{font-size:14px;line-height:1.8;margin-bottom:6px;font-weight:300;}
+.policy-wrap ul li strong{color:var(--text);font-weight:600;}
+.policy-wrap a{color:var(--accent2);}
+.policy-date{font-size:12px;color:rgba(122,92,58,0.4);margin-top:36px;padding-top:20px;border-top:1px solid var(--dim);}
+
+/* FOOTER */
+footer{background:rgba(235,225,210,0.9);backdrop-filter:var(--blur);border-top:1px solid var(--glass-b);padding:32px 5%;position:relative;z-index:10;}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start;}
+.footer-legal{font-size:12px;color:var(--muted);line-height:1.9;font-weight:300;}
+.footer-legal strong{color:var(--text);display:block;font-size:13px;margin-bottom:3px;font-weight:600;}
+.footer-links{display:flex;flex-direction:column;gap:8px;text-align:right;}
+.footer-links a{font-size:12px;color:var(--muted);text-decoration:none;cursor:pointer;transition:color .2s;}
+.footer-links a:hover{color:var(--accent2);}
+.footer-bottom{max-width:1100px;margin:14px auto 0;padding-top:14px;border-top:1px solid var(--dim);font-size:11px;color:rgba(122,92,58,0.35);line-height:1.7;}
+@media(max-width:640px){.footer-inner{grid-template-columns:1fr;}.footer-links{text-align:left;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a class="logo" href="/" data-link>
+      <div class="logo-leaf">🍽️</div>
+      <div class="logo-text">
+        <span class="logo-main">Catarinense</span>
+        <span class="logo-sub">Lanchonete & Restaurante</span>
+      </div>
+    </a>
+    <nav>
+      <a href="/" data-link>Início</a>
+      <a href="/politica-de-privacidade" data-link>Privacidade</a>
+      <a href="/termos-de-uso" data-link>Termos</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HOME -->
+<section id="page-home" class="page">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="badge">Empresa Registrada — Arapongas, PR</div>
+      <h1>Tradição à mesa,<br/><em>presença digital.</em></h1>
+      <p class="hero-sub">Lanchonete e Restaurante Catarinense LTDA une a hospitalidade do sul do Brasil com uma operação digital responsável, transparente e em total conformidade legal.</p>
+      <div class="btns">
+        <a href="#sobre" class="btn btn-p">Conheça a empresa</a>
+        <a href="/politica-de-privacidade" data-link class="btn btn-o">Política de Privacidade</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hr"></div>
+
+  <div class="wrap sec" id="sobre">
+    <div class="sec-tag">Sobre a empresa</div>
+    <h2 class="sec-title">Quem somos</h2>
+    <p class="sec-sub">Sediada em Arapongas, Paraná, a Lanchonete e Restaurante Catarinense LTDA atua com tradição, qualidade e compromisso com seus clientes e parceiros.</p>
+    <div class="grid">
+      <div class="card"><div class="card-icon">🏪</div><h3>Empresa Legítima</h3><p>Registrada e ativa perante os órgãos competentes brasileiros, operando em plena conformidade com a legislação nacional vigente.</p></div>
+      <div class="card"><div class="card-icon">🌿</div><h3>Presença Digital Ética</h3><p>Nossa operação digital segue rigorosamente todas as políticas das plataformas de publicidade, garantindo anúncios verídicos e transparentes.</p></div>
+      <div class="card"><div class="card-icon">🤝</div><h3>Venda Direta</h3><p>Comercializamos diretamente com o consumidor final. Somos proprietários dos produtos e conteúdos anunciados, responsáveis por toda a jornada de compra.</p></div>
+    </div>
+  </div>
+
+  <div class="hr"></div>
+
+  <div class="wrap sec">
+    <div class="sec-tag">Modelo de Operação</div>
+    <h2 class="sec-title">Como operamos</h2>
+    <p class="sec-sub">Simplicidade, responsabilidade e conformidade em cada etapa da nossa operação digital.</p>
+    <div class="grid">
+      <div class="card"><div class="card-icon">📣</div><h3>Publicidade Responsável</h3><p>Utilizamos o Google Ads em conformidade com todas as políticas da plataforma. Nossos anúncios são claros, verídicos e sem qualquer conteúdo enganoso.</p></div>
+      <div class="card"><div class="card-icon">💳</div><h3>Pagamentos Verificados</h3><p>Transações processadas por meios reconhecidos e verificados. Perfil de pagamentos Google ID: 7381-4311-6261.</p></div>
+      <div class="card"><div class="card-icon">📦</div><h3>Compromisso Total</h3><p>Assumimos responsabilidade integral pelos produtos e conteúdos anunciados, garantindo qualidade e suporte ao cliente em cada etapa.</p></div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Conformidade Legal</div></div>
+      <div class="stat"><div class="stat-n">PR</div><div class="stat-l">Arapongas, Paraná</div></div>
+      <div class="stat"><div class="stat-n">LGPD</div><div class="stat-l">Proteção de Dados</div></div>
+      <div class="stat"><div class="stat-n">SSL</div><div class="stat-l">Navegação Segura</div></div>
+    </div>
+  </div>
+
+  <div class="hr"></div>
+
+  <div class="wrap sec">
+    <div class="sec-tag">Segurança e Dados</div>
+    <h2 class="sec-title">Privacidade em cada detalhe</h2>
+    <p class="sec-sub">Tratamos os dados dos nossos clientes com o mesmo cuidado que dedicamos aos nossos produtos — máxima responsabilidade e sigilo.</p>
+    <div class="grid">
+      <div class="card"><div class="card-icon">🔐</div><h3>Criptografia SSL/TLS</h3><p>Toda comunicação protegida por HTTPS com certificado SSL ativo em todas as páginas do site.</p></div>
+      <div class="card"><div class="card-icon">🚫</div><h3>Dados Não Comercializados</h3><p>Não vendemos, cedemos ou compartilhamos dados pessoais com terceiros para fins comerciais sem consentimento explícito.</p></div>
+      <div class="card"><div class="card-icon">✅</div><h3>Seus Direitos Garantidos</h3><p>Acesso, correção, portabilidade e exclusão de dados garantidos conforme os Arts. 17 a 22 da LGPD.</p></div>
+    </div>
+  </div>
+
+  <div class="hr"></div>
+
+  <div class="wrap sec">
+    <div class="sec-tag">Transparência</div>
+    <h2 class="sec-title">Dados institucionais</h2>
+    <div class="box" style="margin-top:44px;">
+      <h4>📋 Informações da Empresa</h4>
+      <p>
+        <strong>Razão Social:</strong> Lanchonete e Restaurante Catarinense LTDA<br/>
+        <strong>CNPJ:</strong> 75.150.763/0001-18<br/>
+        <strong>Endereço:</strong> Saída para Astorga PR-218, Km 08 — Jardim Universitário, Arapongas - PR, CEP 86702-670, Brasil<br/>
+        <strong>E-mail:</strong> thanhnhan15592@gmail.com<br/>
+        <strong>Responsável:</strong> Kalina Ubaldina<br/>
+        <strong>País / Região:</strong> Brasil (BR) &nbsp;·&nbsp; <strong>Idioma:</strong> Português (Brasil)<br/>
+        <strong>ID Perfil de Pagamentos Google:</strong> 7381-4311-6261<br/>
+        <strong>Site:</strong> everydaybagtop.shop
+      </p>
+    </div>
+    <div class="box">
+      <h4>⚖️ Conformidade com Google Ads</h4>
+      <p>Este site e as campanhas da Lanchonete e Restaurante Catarinense LTDA operam em total conformidade com as <strong>Políticas do Google Ads</strong>, incluindo diretrizes sobre Práticas Comerciais, Transparência do Anunciante, Destino do Anúncio e Coleta de Dados. Não utilizamos cloaking, redirecionamentos enganosos ou qualquer prática vedada. O conteúdo é idêntico para todos os visitantes. Esta empresa está verificada no Google Ads.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section id="page-privacy" class="page">
+  <div class="policy-wrap">
+    <div class="sec-tag" style="padding-top:20px;">Legal</div>
+    <h2>Política de Privacidade</h2>
+
+    <h3>1. Identificação do Controlador</h3>
+    <p>Esta Política de Privacidade é aplicável à <strong>Lanchonete e Restaurante Catarinense LTDA</strong>, CNPJ 75.150.763/0001-18, com sede na Saída para Astorga PR-218, Km 08 — Jardim Universitário, Arapongas - PR, CEP 86702-670, Brasil, responsável pelo tratamento dos dados pessoais coletados por meio do site <strong>everydaybagtop.shop</strong>.</p>
+    <p>Contato do encarregado de dados (DPO): <strong>thanhnhan15592@gmail.com</strong></p>
+
+    <h3>2. Base Legal e Conformidade com a LGPD</h3>
+    <p>O tratamento de dados pessoais fundamenta-se nas seguintes bases legais da <strong>LGPD (Lei nº 13.709/2018)</strong>:</p>
+    <ul>
+      <li><strong>Consentimento (Art. 7º, I):</strong> quando o titular autoriza expressamente o tratamento.</li>
+      <li><strong>Legítimo interesse (Art. 7º, IX):</strong> para segurança, prevenção de fraudes e melhoria dos serviços.</li>
+      <li><strong>Cumprimento de obrigação legal (Art. 7º, II):</strong> quando exigido por legislação aplicável.</li>
+      <li><strong>Execução de contrato (Art. 7º, V):</strong> quando necessário para prestação de serviços solicitados.</li>
+    </ul>
+
+    <h3>3. Dados Coletados</h3>
+    <ul>
+      <li><strong>Dados de identificação:</strong> nome, e-mail, telefone (quando fornecidos voluntariamente).</li>
+      <li><strong>Dados de navegação:</strong> IP, navegador, sistema operacional, páginas visitadas, tempo de permanência.</li>
+      <li><strong>Dados de dispositivo:</strong> identificadores, resolução de tela, localização aproximada.</li>
+      <li><strong>Dados de interação:</strong> cliques em anúncios e conversões registradas pelas plataformas de publicidade.</li>
+      <li><strong>Cookies e tecnologias similares:</strong> conforme detalhado abaixo.</li>
+    </ul>
+
+    <h3>4. Finalidade do Tratamento</h3>
+    <ul>
+      <li>Operação, manutenção e melhoria do site e dos serviços oferecidos.</li>
+      <li>Veiculação de publicidade personalizada e mensuração de campanhas no Google Ads.</li>
+      <li>Análise de tráfego para otimização da experiência do usuário.</li>
+      <li>Prevenção de fraudes e acessos não autorizados.</li>
+      <li>Cumprimento de obrigações legais e regulatórias.</li>
+    </ul>
+
+    <h3>5. Armazenamento e Proteção</h3>
+    <ul>
+      <li>Protocolo HTTPS com SSL/TLS ativo em todas as páginas.</li>
+      <li>Acesso restrito a pessoal autorizado mediante autenticação.</li>
+      <li>Monitoramento contínuo de segurança.</li>
+      <li>Backups regulares com criptografia.</li>
+      <li>Procedimentos de resposta a incidentes conforme a LGPD.</li>
+    </ul>
+
+    <h3>6. Compartilhamento de Dados</h3>
+    <p><strong>A Lanchonete e Restaurante Catarinense LTDA não vende, aluga ou comercializa dados pessoais.</strong> Compartilhamento apenas em:</p>
+    <ul>
+      <li><strong>Plataformas de publicidade:</strong> Google LLC para veiculação de anúncios e análise de desempenho.</li>
+      <li><strong>Provedores de serviço:</strong> hospedagem e infraestrutura sob contrato de confidencialidade.</li>
+      <li><strong>Obrigações legais:</strong> quando exigido por ordem judicial ou autoridade competente.</li>
+    </ul>
+
+    <h3>7. Cookies e Rastreamento</h3>
+    <ul>
+      <li><strong>Cookies essenciais:</strong> necessários para o funcionamento básico do site.</li>
+      <li><strong>Cookies de desempenho:</strong> análise via Google Analytics.</li>
+      <li><strong>Cookies de publicidade (Google Ads / DoubleClick):</strong> veiculação de anúncios, remarketing e mensuração de campanhas.</li>
+      <li><strong>Cookies de funcionalidade:</strong> armazenam preferências do usuário.</li>
+    </ul>
+    <p>Gerencie em <a href="https://adssettings.google.com" target="_blank" rel="noopener">adssettings.google.com</a> ou nas configurações do navegador.</p>
+
+    <h3>8. Transferência Internacional</h3>
+    <p>Provedores como Google LLC (EUA) podem processar dados fora do Brasil, em conformidade com o Capítulo V da LGPD.</p>
+
+    <h3>9. Direitos do Titular</h3>
+    <p>Conforme Arts. 17 a 22 da LGPD: acesso, correção, anonimização, portabilidade, eliminação, revogação do consentimento, informação sobre compartilhamento e reclamação à ANPD. Solicitações respondidas em até 15 dias via <strong>thanhnhan15592@gmail.com</strong>.</p>
+
+    <h3>10. Menores de Idade</h3>
+    <p>Este site não é direcionado a menores de 18 anos. Dados identificados serão imediatamente excluídos.</p>
+
+    <h3>11. Alterações</h3>
+    <p>Esta Política pode ser atualizada a qualquer momento. O uso continuado implica aceitação da nova versão.</p>
+
+    <h3>12. Contato</h3>
+    <p><strong>E-mail:</strong> thanhnhan15592@gmail.com<br/>
+    <strong>Endereço:</strong> Saída para Astorga PR-218, Km 08 — Jardim Universitário, Arapongas - PR, CEP 86702-670, Brasil</p>
+    <p class="policy-date">Última atualização: março de 2026</p>
+  </div>
+</section>
+
+<!-- TERMS -->
+<section id="page-terms" class="page">
+  <div class="policy-wrap">
+    <div class="sec-tag" style="padding-top:20px;">Legal</div>
+    <h2>Termos de Uso</h2>
+
+    <h3>1. Aceitação dos Termos</h3>
+    <p>Ao acessar o site <strong>everydaybagtop.shop</strong>, de propriedade da <strong>Lanchonete e Restaurante Catarinense LTDA</strong>, CNPJ 75.150.763/0001-18, o usuário declara ter lido e concordado com estes Termos e com a Política de Privacidade. Caso não concorde, deve cessar imediatamente o uso do site.</p>
+    <p>Estes Termos regem a relação entre a empresa e qualquer usuário, em conformidade com o <strong>Marco Civil da Internet (Lei nº 12.965/2014)</strong>, o <strong>Código de Defesa do Consumidor (Lei nº 8.078/1990)</strong> e a <strong>LGPD (Lei nº 13.709/2018)</strong>.</p>
+
+    <h3>2. Licença de Uso</h3>
+    <p>Licença limitada, não exclusiva e revogável para uso <strong>pessoal e não comercial</strong>. É vedado copiar, reproduzir, modificar, usar comercialmente ou realizar engenharia reversa de qualquer conteúdo sem autorização prévia por escrito.</p>
+
+    <h3>3. Propriedade Intelectual</h3>
+    <p>Todo o conteúdo — textos, imagens, logotipos, layout e código — é de propriedade exclusiva da Lanchonete e Restaurante Catarinense LTDA ou de seus licenciantes, protegido pelas leis brasileiras e internacionais.</p>
+
+    <h3>4. Isenção de Responsabilidade</h3>
+    <p>O conteúdo é fornecido <strong>"como está"</strong>, sem garantias expressas ou implícitas. Não garantimos disponibilidade ininterrupta ou que os resultados atenderão às expectativas do usuário.</p>
+
+    <h3>5. Limitação de Responsabilidade</h3>
+    <p>Na máxima extensão permitida pela lei, a empresa não será responsável por danos diretos, indiretos ou consequentes decorrentes do uso deste site.</p>
+
+    <h3>6. Precisão das Informações</h3>
+    <p>O conteúdo pode conter erros técnicos ou tipográficos. A empresa reserva-se o direito de alterar o conteúdo a qualquer momento sem aviso prévio.</p>
+
+    <h3>7. Links para Terceiros</h3>
+    <p>Links para sites de terceiros são para conveniência apenas. A empresa não controla nem se responsabiliza por seu conteúdo.</p>
+
+    <h3>8. Conformidade com Google Ads</h3>
+    <p>Todas as campanhas são conduzidas em estrita conformidade com as <strong>Políticas do Google Ads</strong>. Os anúncios são verídicos e não utilizam técnicas proibidas.</p>
+
+    <h3>9. Conduta do Usuário</h3>
+    <p>O usuário deve utilizar o site apenas para fins lícitos, sendo proibido transmitir material ilegal ou interferir no funcionamento do site.</p>
+
+    <h3>10. Modificações</h3>
+    <p>Estes Termos podem ser revisados a qualquer momento. O uso continuado constitui aceitação dos novos termos.</p>
+
+    <h3>11. Rescisão</h3>
+    <p>A empresa pode encerrar o acesso do usuário a qualquer momento, sem aviso prévio, em caso de violação destes Termos.</p>
+
+    <h3>12. Legislação e Foro</h3>
+    <p>Estes Termos são regidos pelas leis brasileiras. Fica eleito o <strong>Foro da Comarca de Arapongas, Estado do Paraná</strong>, com exclusão de qualquer outro.</p>
+
+    <h3>13. Contato</h3>
+    <p><strong>E-mail:</strong> thanhnhan15592@gmail.com<br/>
+    <strong>Endereço:</strong> Saída para Astorga PR-218, Km 08 — Jardim Universitário, Arapongas - PR, CEP 86702-670, Brasil</p>
+    <p class="policy-date">Última atualização: março de 2026</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-legal">
+      <strong>Lanchonete e Restaurante Catarinense LTDA · CNPJ 75.150.763/0001-18</strong>
+      Saída para Astorga PR-218, Km 08 — Jardim Universitário · Arapongas - PR · CEP 86702-670 · Brasil<br/>
+      País/Região: Brasil (BR) · Idioma: Português (Brasil)<br/>
+      ID Perfil de Pagamentos Google: 7381-4311-6261 · thanhnhan15592@gmail.com
+    </div>
+    <div class="footer-links">
+      <a href="/" data-link>Início</a>
+      <a href="/politica-de-privacidade" data-link>Política de Privacidade</a>
+      <a href="/termos-de-uso" data-link>Termos de Uso</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    Este site opera em conformidade com as Políticas do Google Ads, a LGPD (Lei nº 13.709/2018), o Marco Civil da Internet (Lei nº 12.965/2014) e demais legislações brasileiras. © 2026 Lanchonete e Restaurante Catarinense LTDA. Todos os direitos reservados.
+  </div>
+</footer>
+
+<script>
+const ROUTES={'/':'page-home','/politica-de-privacidade':'page-privacy','/termos-de-uso':'page-terms'};
+function router(){
+  const path=window.location.pathname.replace(/\/$/,'')||'/';
+  const id=ROUTES[path]||'page-home';
+  document.querySelectorAll('section.page').forEach(s=>s.classList.remove('active'));
+  const p=document.getElementById(id);
+  if(p)p.classList.add('active');
+  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')===(path===''?'/':path)));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.addEventListener('click',e=>{
+  const el=e.target.closest('[data-link]');
+  if(!el)return;
+  e.preventDefault();
+  history.pushState(null,null,el.getAttribute('href'));
+  router();
+});
+window.addEventListener('popstate',router);
+router();
+</script>
+</body>
+</html>
